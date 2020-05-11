@@ -6,6 +6,6 @@
   "author": "Lucas Constantino Silva <lucasconstantinosilva@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "mkdir -p build && cp index.html build/index.html && sed 's/{{ HELLO }}/'\"$HELLO\"'/g' build/index.html"
+    "build": "mkdir -p build && sed 's/{{ HELLO }}/'\"$HELLO\"'/g' index.html > build/index.html"
   }
 }
