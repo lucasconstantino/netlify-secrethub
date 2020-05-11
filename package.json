@@ -4,5 +4,8 @@
   "main": "index.js",
   "repository": "git@github.com:lucasconstantino/netlify-secrethub.git",
   "author": "Lucas Constantino Silva <lucasconstantinosilva@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "build": "mkdir -p build && cp index.html build/index.html && sed 's/{{ HELLO }}/'\"$HELLO\"'/g' build/index.html"
+  }
 }
