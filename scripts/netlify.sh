@@ -15,4 +15,4 @@ echo "--------------------------------------------------"
 echo "2 - Build"
 echo "--------------------------------------------------"
 
-secrethub run -- yarn build
+secrethub run --var env=$SECRETHUB_ENV -- yarn build
