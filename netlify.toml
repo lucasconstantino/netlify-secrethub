@@ -5,8 +5,8 @@
 [context.production.environment]
   SECRETHUB_ENV = "prod"
 
-[context.deploy-preview]
+[context.deploy-preview.environment]
   SECRETHUB_ENV = "dev"
 
-[context.dev]
+[context.dev.environment]
   SECRETHUB_ENV = "dev"
