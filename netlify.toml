@@ -1,6 +1,7 @@
 [build]
   publish = "build/"
   command = "./scripts/netlify.sh"
+  functions = "./functions/"
 
 [context.production.environment]
   SECRETHUB_ENV = "prod"
