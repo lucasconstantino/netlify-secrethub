@@ -6,6 +6,12 @@
   "author": "Lucas Constantino Silva <lucasconstantinosilva@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "mkdir -p build && sed 's/{{ HELLO }}/'\"$HELLO\"'/g' index.html > build/index.html"
+    "build": "mkdir -p build && sed 's/{{ HELLO }}/'\"$HELLO\"'/g' index.html > build/index.html",
+    "start": "yarn build && serve build",
+    "e2e:test": "cypress run --browser chrome --headless"
+  },
+  "devDependencies": {
+    "cypress": "^4.5.0",
+    "serve": "^11.3.0"
   }
 }
