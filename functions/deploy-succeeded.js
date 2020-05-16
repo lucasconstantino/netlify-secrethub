@@ -16,8 +16,6 @@ exports.handler = function (event, context, callback) {
   const options = {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
-      "Content-Length": data.length,
       Authorization: `token ${process.env.GITHUB_OAUTH_TOKEN}`,
     },
   };
