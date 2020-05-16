@@ -13,5 +13,8 @@
   "devDependencies": {
     "cypress": "^4.5.0",
     "serve": "^11.3.0"
+  },
+  "dependencies": {
+    "@octokit/rest": "^17.9.0"
   }
 }
