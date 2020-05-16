@@ -11,8 +11,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
 
-      - if: ${{ github.event.client_payload.deploy.context == "production" }}
+      - if: ${{ github.event.client_payload.deploy.context == 'production' }}
         run: echo "run smoke tests"
 
-      - if: ${{ github.event.client_payload.deploy.context != "production" }}
+      - if: ${{ github.event.client_payload.deploy.context != 'production' }}
         run: echo "run all tests"
