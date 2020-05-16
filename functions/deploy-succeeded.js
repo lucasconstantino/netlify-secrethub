@@ -23,7 +23,7 @@ exports.handler = function (event, context, callback) {
   };
 
   const req = https.request(url, options, (res) => {
-    res.on('error', (error) => callback(Error(error)));)
+    res.on("error", (error) => callback(Error(error)));
     res.on("end", () => callback(null, { statusCode: res.statusCode }));
   });
 
