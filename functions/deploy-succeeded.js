@@ -1,4 +1,4 @@
-const http = require("http");
+const https = require("https");
 
 exports.handler = function (event, context, callback) {
   const body = JSON.parse(event.body);
@@ -16,14 +16,18 @@ exports.handler = function (event, context, callback) {
   const options = {
     method: "POST",
     headers: {
+      "Content-Type": "application/json",
+      "Content-Length": Buffer.byteLength(data),
       Authorization: `token ${process.env.GITHUB_OAUTH_TOKEN}`,
     },
   };
 
-  const req = http.request(url, options, (res) => callback(null, res));
+  const req = https.request(url, options, (res) => {
+    res.on('error', (error) => callback(Error(error)));)
+    res.on("end", () => callback(null, { statusCode: res.statusCode }));
+  });
 
   req.on("error", (error) => callback(Error(error)));
-
   req.write(data);
   req.end();
 };
