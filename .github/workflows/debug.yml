@@ -11,4 +11,4 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
 
-      - uses: hmarr/debug-action@v1
+      - uses: hmarr/debug-action@master
