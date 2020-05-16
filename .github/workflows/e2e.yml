@@ -7,6 +7,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    container: cypress/browsers:chrome69
     steps:
       - name: Checkout
         uses: actions/checkout@master
@@ -14,4 +15,5 @@ jobs:
       - uses: cypress-io/github-action@master
         # if: ${{ github.event.client_payload.deploy.context != "production" }}
         with:
+          browser: chrome
           config: baseUrl=${{ github.event.client_payload.deploy.deploy_url }}
