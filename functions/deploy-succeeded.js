@@ -1,4 +1,4 @@
-const https = require("https");
+const http = require("http");
 
 exports.handler = function (event, context, callback) {
   const body = JSON.parse(event.body);
@@ -20,7 +20,7 @@ exports.handler = function (event, context, callback) {
     },
   };
 
-  const req = https.request(url, options, (res) => callback(null, res));
+  const req = http.request(url, options, (res) => callback(null, res));
 
   req.on("error", (error) => callback(Error(error)));
 
