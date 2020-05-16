@@ -21,7 +21,7 @@ exports.handler = function (event, context) {
     headers: {
       "Content-Type": "application/json",
       "Content-Length": Buffer.byteLength(data),
-      Authorization: `token ${process.env.GITHUB_OAUTH_TOKEN}`,
+      Authorization: `token ${process.env.GITHUB_API_TOKEN}`,
     },
   };
 
