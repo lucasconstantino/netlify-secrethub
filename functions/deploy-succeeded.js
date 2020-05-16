@@ -11,6 +11,6 @@ exports.handler = async function (event) {
     owner,
     repo,
     event_type: "deploy_succeeded",
-    client_payload: body.payload,
+    client_payload: { deploy: body.payload },
   });
 };
