@@ -1,12 +1,11 @@
 const https = require("https");
 
-exports.handler = function (event, context, callback) {
+exports.handler = function (event, context) {
   const body = JSON.parse(event.body);
   const { user, repo } = body.payload.commit_url.match(
     /github\.com\/(?<user>[^/]+)\/(?<repo>[^/]+)/u
   ).groups;
 
-  const url = `https://api.github.com/repos/${user}/${repo}/dispatches`;
   const payload = {
     event_type: "deploy_succeeded",
     client_payload: body.payload,
@@ -15,6 +14,9 @@ exports.handler = function (event, context, callback) {
   const data = JSON.stringify(payload);
 
   const options = {
+    port: 443,
+    hostname: "api.github.com",
+    path: `repos/${user}/${repo}/dispatches`,
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -23,12 +25,19 @@ exports.handler = function (event, context, callback) {
     },
   };
 
-  const req = https.request(url, options, (res) => {
-    res.on("error", (error) => callback(Error(error)));
-    res.on("end", () => callback(null, { statusCode: res.statusCode }));
+  console.log({ options });
+
+  const onError = (error) => {
+    console.error(error);
+    context.done(null, "failed");
+  };
+
+  const req = https.request(options, (res) => {
+    res.on("error", onError);
+    res.on("end", () => context.succeed());
   });
 
-  req.on("error", (error) => callback(Error(error)));
+  req.on("error", onError);
   req.write(data);
   req.end();
 };
