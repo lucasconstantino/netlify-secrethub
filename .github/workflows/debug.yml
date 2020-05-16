@@ -2,7 +2,7 @@ name: Debug Action
 
 on:
   repository_dispatch:
-    types: [deploy-succeeded]
+    types: [deploy_succeeded]
 
 jobs:
   debug:

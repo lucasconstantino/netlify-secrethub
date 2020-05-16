@@ -8,11 +8,12 @@ exports.handler = function (event, context, callback) {
 
   const url = `https://api.github.com/repos/${user}/${repo}/dispatches`;
   const payload = {
-    event_type: "deploy-succeeded",
+    event_type: "deploy_succeeded",
     client_payload: body.payload,
   };
 
   const data = JSON.stringify(payload);
+
   const options = {
     method: "POST",
     headers: {
