@@ -1,0 +1,14 @@
+name: Debug Action
+
+on:
+  repository_dispatch:
+    types: [deploy-succeeded]
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - uses: hmarr/debug-action
