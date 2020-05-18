@@ -3,6 +3,10 @@
   command = "./scripts/netlify.sh"
   functions = "./functions/"
 
+[build.environment]
+  # cache Cypress binaries together with node_modules
+  CYPRESS_CACHE_FOLDER = "./node_modules/CypressBinary"
+
 [context.production.environment]
   SECRETHUB_ENV = "prod"
 
