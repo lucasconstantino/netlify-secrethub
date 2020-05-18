@@ -19,4 +19,4 @@
 
 [[plugins]]
   package = "netlify-plugin-cypress"
-  inputs = { spec = "non-existing-tests" }
+  inputs = { spec = "$CYPRESS_SPEC  " }
