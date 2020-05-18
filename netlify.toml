@@ -6,6 +6,7 @@
 [build.environment]
   # cache Cypress binaries together with node_modules
   CYPRESS_CACHE_FOLDER = "./node_modules/CypressBinary"
+  CYPRESS_SPEC = "cypress/integration/**/*.js"
 
 [context.production.environment]
   SECRETHUB_ENV = "prod"
@@ -18,4 +19,4 @@
 
 [[plugins]]
   package = "netlify-plugin-cypress"
-  spec = "non-existing-tests"
+  spec = "$CYPRESS_SPEC"
